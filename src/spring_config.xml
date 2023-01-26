@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/util 
+   		   http://www.springframework.org/schema/util/spring-util.xsd
+   		   http://www.springframework.org/schema/context
+  			 http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+   		   
+   		        <context:annotation-config/>
+   		   
+   		   
+   	<!--clients-->	   
+  	<bean id="client_mumbai" class="com.springdemo.model.Client">
+  		<property name="id" value="400"/>
+  		<property name="clientName" value="ViralTech Solutions"/>
+  		<property name="location" value="Mahape"/>
+  	</bean>	
+  	
+  	<bean id="client_delhi" class="com.springdemo.model.Client">
+  		<property name="id" value="500"/>
+  		<property name="clientName" value="CatsEye Systems and Solutions"/>
+  		<property name="location" value="Vasant kunj"/>
+  	</bean>	
+  	
+  	<!-- Addresses --> 
+  	<bean id="addr1" class="com.springdemo.model.Address">
+  		<property name="pincode" value="400072"/>
+  		<property name="city" value="Mumbai"/>
+  	</bean>  
+   
+   	<bean id="addr2" class="com.springdemo.model.Address">
+  		<property name="pincode" value="500008"/>
+  		<property name="city" value="Banglore"/>
+  	</bean> 
+  	
+  		<bean id="addr3" class="com.springdemo.model.Address">
+  		<property name="pincode" value="600098"/>
+  		<property name="city" value="Pune"/>
+  	</bean>  
+  	
+  	
+  	
+  	<bean name="emp2" class="com.springdemo.model.Employee"
+  		c:id="12"
+  		c:name="Sammy jadahv"
+  		c:designation="noob dev"
+  		
+  		
+  	/>
+  	
+  		<util:list value-type="com.springdemo.model.Client" id="client_list"  list-class="java.util.ArrayList">
+  				<ref bean="client_delhi"/>
+  				<ref bean="client_mumbai"/>
+  	</util:list>
+  
+  	
+  
+  		<util:map key-type="java.lang.String" value-type="com.springdemo.model.Address" id="address_map" map-class="java.util.HashMap">
+  				<entry key="#{addr1.getCity()}" value-ref="addr1"/>
+  				<entry key="#{addr3.getCity()}" value-ref="addr3"/>
+  			</util:map>
+  	
+  	
+  	
+  	
+   		   
+   		   
+   		   
+</beans>
